@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,470 +6,872 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vCard - Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #1a1a1a;
-      color: #e0e0e0;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 300px;
-      background: #2a2a2a;
-      padding: 30px;
-      border-radius: 20px;
-      margin: 20px;
-      height: fit-content;
-    }
-
-    .avatar-box {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .avatar-box img {
-      width: 110px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .name {
-      font-size: 24px;
-      font-weight: 600;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 5px;
-    }
-
-    .title {
-      color: #a0a0a0;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 14px;
-    }
-
-    .separator {
-      height: 1px;
-      background: #404040;
-      margin: 20px 0;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      font-size: 14px;
-    }
-
-    .icon {
-      width: 20px;
-      margin-right: 15px;
-      color: #ffc107;
-    }
-
-    .contact-title {
-      color: #a0a0a0;
-      font-size: 12px;
-      margin-bottom: 3px;
-    }
-
-    .contact-link {
-      color: #e0e0e0;
-      text-decoration: none;
-    }
-
-    .social-list {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      list-style: none;
-    }
-
-    .social-link {
-      color: #a0a0a0;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-
-    .social-link:hover {
-      color: #ffc107;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 20px;
-      margin-left: 20px;
-    }
-
-    .navbar {
-      background: #2a2a2a;
-      border-radius: 15px;
-      padding: 0;
-      margin-bottom: 30px;
-    }
-
-    .navbar-list {
-      display: flex;
-      list-style: none;
-    }
-
-    .navbar-link {
-      background: none;
-      border: none;
-      color: #a0a0a0;
-      padding: 15px 25px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 15px;
-      transition: all 0.3s;
-    }
-
-    .navbar-link.active {
-      background: #ffc107;
-      color: #1a1a1a;
-    }
-
-    .navbar-link:hover {
-      color: #fff;
-    }
-
-    .content-section {
-      background: #2a2a2a;
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 30px;
-      display: none;
-    }
-
-    .content-section.active {
-      display: block;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: #ffc107;
-    }
-
-    .section-text {
-      line-height: 1.7;
-      color: #c0c0c0;
-      margin-bottom: 20px;
-    }
-
-    .timeline {
-      margin-top: 30px;
-    }
-
-    .timeline-item {
-      margin-bottom: 25px;
-      padding-left: 25px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      background: #ffc107;
-      border-radius: 50%;
-    }
-
-    .timeline-date {
-      color: #ffc107;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 5px;
-    }
-
-    .timeline-title {
-      color: #fff;
-      font-weight: 500;
-      margin-bottom: 5px;
-    }
-
-    .timeline-desc {
-      color: #a0a0a0;
-      font-size: 14px;
-    }
-
-    .publication-item {
-      margin-bottom: 25px;
-      padding: 20px;
-      background: #333;
-      border-radius: 10px;
-      border-left: 4px solid #ffc107;
-    }
-
-    .pub-authors {
-      color: #c0c0c0;
-      margin-bottom: 5px;
-    }
-
-    .pub-title {
-      color: #fff;
-      font-weight: 500;
-      margin-bottom: 5px;
-    }
-
-    .pub-journal {
-      color: #ffc107;
-      font-weight: 500;
-      margin-bottom: 5px;
-    }
-
-    .pub-note {
-      color: #a0a0a0;
-      font-size: 13px;
-    }
-
-    .project-item {
-      margin-bottom: 20px;
-      padding: 20px;
-      background: #333;
-      border-radius: 10px;
-    }
-
-    .project-title {
-      color: #ffc107;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .project-period {
-      color: #a0a0a0;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .project-role {
-      color: #c0c0c0;
-      font-size: 14px;
-    }
-  </style>
 </head>
 
 <body>
-  <aside class="sidebar">
-    <div class="avatar-box">
-      <img src="https://hwding-whu.github.io/Portfolio/website-demo-image/hwding.png" alt="Your Name">
-    </div>
-    
-    <h1 class="name">Hongwei Ding</h1>
-    <p class="title">Northeastern University</p>
-    
-    <div class="separator"></div>
-    
-    <div class="contact-item">
-      <div class="icon">📧</div>
-      <div>
-        <p class="contact-title">EMAIL</p>
-        <a href="mailto:hwding@whu.edu.cn" class="contact-link">hwding@whu.edu.cn</a>
-      </div>
-    </div>
-    
-    <div class="contact-item">
-      <div class="icon">📱</div>
-      <div>
-        <p class="contact-title">PHONE</p>
-        <a href="tel:+15623067863" class="contact-link">+15623067863</a>
-      </div>
-    </div>
-    
-    <div class="contact-item">
-      <div class="icon">🏢</div>
-      <div>
-        <p class="contact-title">AFFILIATION</p>
-        <p class="contact-link">Northeastern University</p>
-      </div>
-    </div>
-    
-    <div class="contact-item">
-      <div class="icon">📍</div>
-      <div>
-        <p class="contact-title">LOCATION</p>
-        <p class="contact-link">Qinhuangdao, Hebei, China</p>
-      </div>
-    </div>
-    
-    <div class="separator"></div>
-    
-    <ul class="social-list">
-      <li><a href="#" class="social-link">📘</a></li>
-      <li><a href="#" class="social-link">🐦</a></li>
-      <li><a href="#" class="social-link">📷</a></li>
-    </ul>
-  </aside>
 
-  <div class="main-content">
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li><button class="navbar-link active" onclick="showSection('about')">About</button></li>
-        <li><button class="navbar-link" onclick="showSection('resume')">Resume</button></li>
-        <li><button class="navbar-link" onclick="showSection('portfolio')">Portfolio</button></li>
-        <li><button class="navbar-link" onclick="showSection('blog')">Blog</button></li>
-        <li><button class="navbar-link" onclick="showSection('contact')">Contact</button></li>
-      </ul>
-    </nav>
+  <!--
+    - #MAIN
+  -->
 
-    <div id="about" class="content-section active">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-text">
-        I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-        I enjoy turning complex problems into simple, beautiful and intuitive designs.
-      </p>
-      <p class="section-text">
-        My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-        Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-        across your message and identity in the most creative way. I created web design for many famous brand companies.
-      </p>
-      
-      <h3 class="section-title" style="font-size: 24px; margin-top: 40px;">News</h3>
-      <ul style="list-style: none; color: #c0c0c0; line-height: 1.8;">
-        <li>[Mar. 2025] Our paper about superpixel segmentation is accepted to TGRS.</li>
-        <li>[Dec. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
-        <li>[Dec. 2023] I will go to teach at the Northeastern University at Qinhuangdao.</li>
-        <li>[Apr. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
-        <li>[Aug. 2022] Our paper about building detection is accepted to JAG.</li>
-      </ul>
-    </div>
+  <main>
 
-    <div id="resume" class="content-section">
-      <h2 class="section-title">Resume</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <p class="timeline-date">2024.01 - 至今</p>
-          <h4 class="timeline-title">东北大学秦皇岛分校</h4>
-          <p class="timeline-desc">计算机与通信工程学院 讲师</p>
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+
+          <p class="title">Web developer</p>
         </div>
-        <div class="timeline-item">
-          <p class="timeline-date">2019.09 - 2023.12</p>
-          <h4 class="timeline-title">武汉大学</h4>
-          <p class="timeline-desc">国家网络安全学院 博士学位</p>
-        </div>
-      </div>
-    </div>
 
-    <div id="portfolio" class="content-section">
-      <h2 class="section-title">Publications</h2>
-      
-      <div class="publication-item">
-        <p class="pub-authors"><strong>Ding Hongwei</strong>, Sun Yu, Huang Nana, Shen Zhidong*, Cui Xiaohui*.</p>
-        <p class="pub-title">TMG-GAN: Generative Adversarial Networks-Based Imbalanced Learning for Network Intrusion Detection</p>
-        <p class="pub-journal">IEEE Transactions on Information Forensics and Security, 2023</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF A刊，ESI高被引论文</p>
-      </div>
-      
-      <div class="publication-item">
-        <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana*, Wu Yaoxin, Cui Xiaohui.</p>
-        <p class="pub-title">Improving Infrared Small Target Detection with GAN-Driven Data Augmentation</p>
-        <p class="pub-journal">IEEE Transactions on Multimedia, 2025</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
-      </div>
-      
-      <div class="publication-item">
-        <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana*, Wu Yaoxin, Cui Xiaohui.</p>
-        <p class="pub-title">Improving Imbalanced Medical Image Classification through GAN-based Data Augmentation Methods</p>
-        <p class="pub-journal">Pattern Recognition, 2025</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
       </div>
 
-      <h3 class="section-title" style="font-size: 24px; margin-top: 50px;">Projects</h3>
-      
-      <div class="project-item">
-        <h4 class="project-title">河北省自然科学基金-青年科学基金项目</h4>
-        <p class="project-period">2024.01 - 2026.12</p>
-        <p class="project-role">主持</p>
-      </div>
-      
-      <div class="project-item">
-        <h4 class="project-title">东北大学人才专项科研启动基金项目</h4>
-        <p class="project-period">2024.03 - 2029.03</p>
-        <p class="project-role">主持</p>
-      </div>
-      
-      <div class="project-item">
-        <h4 class="project-title">中央高校基本科研业务费项目</h4>
-        <p class="project-period">2024.01 - 2025.12</p>
-        <p class="project-role">主持</p>
-      </div>
-    </div>
+      <div class="sidebar-info_more">
 
-    <div id="blog" class="content-section">
-      <h2 class="section-title">Blog</h2>
-      <p class="section-text">Coming soon...</p>
-    </div>
+        <div class="separator"></div>
 
-    <div id="contact" class="content-section">
-      <h2 class="section-title">Contact</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4 class="timeline-title">联系邮箱</h4>
-          <p class="timeline-desc">
-            <a href="mailto:hwding@whu.edu.cn" style="color: #ffc107; text-decoration: none;">hwding@whu.edu.cn</a><br>
-            <a href="mailto:dinghongwei@neuq.edu.cn" style="color: #ffc107; text-decoration: none;">dinghongwei@neuq.edu.cn</a>
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="hwding@whu.edu.cn" class="contact-link">hwding@whu.edu.cn</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+15623067863" class="contact-link">+15623067863</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="business-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Affiliation</p>
+
+              <p class="contact-link">Northeastern University</p>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Qinhuangdao, Hebei, China</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Publications</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Projects</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Research Interests</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
+            I enjoy turning complex problems into simple, beautiful and intuitive designs.
           </p>
-        </div>
-        <div class="timeline-item">
-          <h4 class="timeline-title">电话</h4>
-          <p class="timeline-desc">15623067863</p>
-        </div>
-        <div class="timeline-item">
-          <h4 class="timeline-title">地址</h4>
-          <p class="timeline-desc">东北大学秦皇岛分校综合楼1311</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    function showSection(sectionName) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => section.classList.remove('active'));
-      
-      // Remove active from all navbar links
-      const navLinks = document.querySelectorAll('.navbar-link');
-      navLinks.forEach(link => link.classList.remove('active'));
-      
-      // Show selected section
-      document.getElementById(sectionName).classList.add('active');
-      
-      // Add active to clicked navbar link
-      event.target.classList.add('active');
-    }
-  </script>
+          <p>
+            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
+            Moreover, I add personal touch to your product and make sure that it is eye-catching and easy to use. My aim is to bring
+            across your message and identity in the most creative way. I have created web designs for many famous brand companies.
+          </p>
+        </section>
+        
+        <!--
+        - #NEWS
+        -->
+        
+        <article class="news active" data-page="news" style="color:white;">
+
+          <header>
+            <h2 class="h2 article-title">News</h2>
+          </header>
+
+          <section class="news-text">
+            <ul>
+              <li>[Mar. 2025] Our paper about superpixel segmentation is accepted to TGRS.</li>
+              <li>[Dec. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
+              <li>[Dec. 2023] I will start teaching at the Northeastern University at Qinhuangdao.</li>
+              <li>[Apr. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
+              <li>[Aug. 2022] Our paper about building detection is accepted to JAG.</li>
+            </ul>
+          </section>
+
+        </article>
+
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Ph.D. in Computer Science</h4>
+
+              <span>2018 — 2022</span>
+
+              <p class="timeline-text">
+                Specialized in machine learning and computer vision with focus on remote sensing applications and deep learning algorithms.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Master of Science in Computer Engineering</h4>
+
+              <span>2015 — 2018</span>
+
+              <p class="timeline-text">
+                Advanced coursework in artificial intelligence, data structures, and software engineering with research in image processing.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Bachelor of Engineering in Computer Science</h4>
+
+              <span>2011 — 2015</span>
+
+              <p class="timeline-text">
+                Comprehensive foundation in programming, algorithms, database systems, and software development principles.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="briefcase-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Assistant Professor</h4>
+
+              <span>2023 — Present</span>
+
+              <p class="timeline-text">
+                Teaching and research position at Northeastern University, focusing on computer vision, machine learning, and remote sensing applications.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Research Associate</h4>
+
+              <span>2022 — 2023</span>
+
+              <p class="timeline-text">
+                Conducted advanced research in deep learning for geospatial analysis and published findings in top-tier journals.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Graduate Research Assistant</h4>
+
+              <span>2018 — 2022</span>
+
+              <p class="timeline-text">
+                Developed novel algorithms for image segmentation and land cover classification using machine learning techniques.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Machine Learning</h5>
+                <data value="95">95%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Computer Vision</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Remote Sensing</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Programming</h5>
+                <data value="92">92%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 92%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #PUBLICATIONS
+      -->
+
+      <article class="publications" data-page="publications">
+
+        <header>
+          <h2 class="h2 article-title">Publications</h2>
+        </header>
+
+        <section class="publications-list">
+
+          <div class="publication-item">
+            <div class="publication-number">1.</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Advanced Superpixel Segmentation for Remote Sensing Applications</h3>
+              <p class="publication-authors"><strong>H. Ding</strong>, J. Zhang, L. Wang, M. Chen</p>
+              <p class="publication-venue"><em>IEEE Transactions on Geoscience and Remote Sensing (TGRS)</em>, 2025</p>
+              <p class="publication-description">
+                This paper presents a novel approach to superpixel segmentation specifically designed for high-resolution remote sensing imagery, achieving state-of-the-art performance in boundary adherence and computational efficiency.
+              </p>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-number">2.</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Joint Land Use and Land Cover Classification from Heterogeneous Remote Sensing Images</h3>
+              <p class="publication-authors">L. Wang, <strong>H. Ding</strong>, Y. Liu, K. Zhang</p>
+              <p class="publication-venue"><em>ISPRS Journal of Photogrammetry and Remote Sensing</em>, 2023</p>
+              <p class="publication-description">
+                A comprehensive framework for simultaneous land use and land cover classification using multi-modal remote sensing data, demonstrating significant improvements in classification accuracy.
+              </p>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-number">3.</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Deep Learning Approaches for Building Detection in Urban Areas</h3>
+              <p class="publication-authors">M. Chen, <strong>H. Ding</strong>, S. Li, R. Kumar</p>
+              <p class="publication-venue"><em>Journal of Applied Geography (JAG)</em>, 2022</p>
+              <p class="publication-description">
+                Investigation of various deep learning architectures for automated building detection in complex urban environments, with applications to urban planning and disaster management.
+              </p>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-number">4.</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Multi-Scale Feature Fusion for Satellite Image Analysis</h3>
+              <p class="publication-authors"><strong>H. Ding</strong>, Q. Zhou, T. Anderson</p>
+              <p class="publication-venue"><em>Remote Sensing of Environment</em>, 2022</p>
+              <p class="publication-description">
+                A novel multi-scale feature fusion approach that enhances the analysis of satellite imagery for environmental monitoring applications.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+        <style>
+          .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+          }
+          
+          .publication-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
+          
+          .publication-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffdb70;
+            min-width: 30px;
+            text-align: center;
+          }
+          
+          .publication-content {
+            flex: 1;
+          }
+          
+          .publication-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+          }
+          
+          .publication-authors {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 0.3rem;
+          }
+          
+          .publication-venue {
+            font-size: 0.9rem;
+            color: #ffdb70;
+            margin-bottom: 0.8rem;
+          }
+          
+          .publication-description {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.5;
+          }
+        </style>
+
+      </article>
+
+      <!--
+        - #PROJECTS
+      -->
+
+      <article class="projects" data-page="projects">
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="projects-list">
+
+          <div class="project-item">
+            <div class="project-banner">
+              <img src="./assets/images/project-1.jpg" alt="Smart City Analytics Platform" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Smart City Analytics Platform</h3>
+              <p class="project-category">Machine Learning • Urban Planning</p>
+              <p class="project-description">
+                An integrated platform that uses satellite imagery and IoT sensor data to analyze urban development patterns and provide insights for smart city planning.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">GIS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-banner">
+              <img src="./assets/images/project-2.jpg" alt="Environmental Monitoring System" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Environmental Monitoring System</h3>
+              <p class="project-category">Remote Sensing • Environmental Science</p>
+              <p class="project-description">
+                A comprehensive system for monitoring environmental changes using multi-temporal satellite data and machine learning algorithms for change detection.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">GDAL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-banner">
+              <img src="./assets/images/project-3.jpg" alt="Agricultural Yield Prediction" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Agricultural Yield Prediction</h3>
+              <p class="project-category">Deep Learning • Agriculture</p>
+              <p class="project-description">
+                Deep learning models for predicting crop yields using satellite imagery and weather data, helping farmers optimize their agricultural practices.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Keras</span>
+                <span class="tech-tag">Scikit-learn</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <style>
+          .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          }
+          
+          .project-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+          }
+          
+          .project-item:hover {
+            transform: translateY(-5px);
+          }
+          
+          .project-banner {
+            height: 200px;
+            overflow: hidden;
+          }
+          
+          .project-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          
+          .project-content {
+            padding: 1.5rem;
+          }
+          
+          .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+          }
+          
+          .project-category {
+            font-size: 0.85rem;
+            color: #ffdb70;
+            margin-bottom: 1rem;
+          }
+          
+          .project-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+          }
+          
+          .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+          }
+          
+          .tech-tag {
+            background: rgba(255, 219, 112, 0.1);
+            color: #ffdb70;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 219, 112, 0.2);
+          }
+        </style>
+
+      </article>
+
+      <!--
+        - #RESEARCH INTERESTS
+      -->
+
+      <article class="research-interests" data-page="research interests">
+
+        <header>
+          <h2 class="h2 article-title">Research Interests</h2>
+        </header>
+
+        <section class="interests-content">
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="analytics-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Machine Learning & Deep Learning</h3>
+              <p class="interest-description">
+                Developing novel deep learning architectures for computer vision tasks, with particular focus on convolutional neural networks, attention mechanisms, and transformer-based models for image analysis and pattern recognition.
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="earth-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Remote Sensing & Geospatial Analysis</h3>
+              <p class="interest-description">
+                Advancing the application of artificial intelligence in remote sensing, including satellite image processing, land cover classification, change detection, and environmental monitoring using multi-spectral and hyperspectral imagery.
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="eye-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Computer Vision</h3>
+              <p class="interest-description">
+                Exploring advanced computer vision techniques including object detection, semantic segmentation, instance segmentation, and image super-resolution with applications in medical imaging, autonomous systems, and smart cities.
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="leaf-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Environmental AI & Sustainability</h3>
+              <p class="interest-description">
+                Applying AI techniques to address environmental challenges including climate change monitoring, biodiversity conservation, sustainable agriculture, and natural disaster prediction and response systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="business-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Smart Cities & Urban Analytics</h3>
+              <p class="interest-description">
+                Developing intelligent systems for urban planning and management, including traffic flow optimization, urban growth modeling, infrastructure monitoring, and citizen service enhancement through data-driven approaches.
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-item">
+            <div class="interest-icon">
+              <ion-icon name="medical-outline"></ion-icon>
+            </div>
+            <div class="interest-content">
+              <h3 class="interest-title">Medical Image Analysis</h3>
+              <p class="interest-description">
+                Investigating AI applications in healthcare, focusing on medical image segmentation, disease detection and diagnosis, treatment planning, and the development of computer-aided diagnosis systems for improved patient outcomes.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+        <style>
+          .interests-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+          }
+          
+          .interest-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+          
+          .interest-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          }
+          
+          .interest-icon {
+            font-size: 2.5rem;
+            color: #ffdb70;
+            min-width: 50px;
+          }
+          
+          .interest-content {
+            flex: 1;
+          }
+          
+          .interest-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+          }
+          
+          .interest-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.6;
+          }
+        </style>
+
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
