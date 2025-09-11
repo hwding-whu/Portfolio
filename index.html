@@ -125,13 +125,14 @@
     .navbar-list {
       display: flex;
       list-style: none;
+      flex-wrap: wrap;
     }
 
     .navbar-link {
       background: none;
       border: none;
       color: #a0a0a0;
-      padding: 15px 25px;
+      padding: 15px 20px;
       cursor: pointer;
       font-family: inherit;
       font-size: 14px;
@@ -225,33 +226,62 @@
     }
 
     .publication-item {
-      margin-bottom: 25px;
-      padding: 20px;
+      margin-bottom: 30px;
+      padding: 25px;
       background: #333;
-      border-radius: 10px;
+      border-radius: 15px;
       border-left: 4px solid #ffc107;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .publication-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
+    }
+
+    .pub-number {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: #ffc107;
+      color: #1a1a1a;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
     }
 
     .pub-authors {
       color: #c0c0c0;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      margin-top: 10px;
+      font-size: 15px;
     }
 
     .pub-title {
       color: #fff;
-      font-weight: 500;
-      margin-bottom: 5px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.4;
     }
 
     .pub-journal {
       color: #ffc107;
       font-weight: 500;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      font-size: 16px;
     }
 
     .pub-note {
       color: #a0a0a0;
-      font-size: 13px;
+      font-size: 14px;
+      font-style: italic;
     }
 
     .project-item {
@@ -259,12 +289,19 @@
       padding: 20px;
       background: #333;
       border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 193, 7, 0.1);
     }
 
     .project-title {
       color: #ffc107;
       font-weight: 500;
       margin-bottom: 8px;
+      font-size: 16px;
     }
 
     .project-period {
@@ -277,6 +314,26 @@
       color: #c0c0c0;
       font-size: 14px;
     }
+
+    .research-area {
+      background: #333;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .research-area h4 {
+      color: #ffc107;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .research-area p {
+      color: #c0c0c0;
+      line-height: 1.6;
+    }
   </style>
 </head>
 
@@ -287,7 +344,7 @@
     </div>
     
     <h1 class="name">Richard Hanrick</h1>
-    <p class="title">Web developer</p>
+    <p class="title">Web Developer</p>
     
     <div class="separator"></div>
     
@@ -337,8 +394,9 @@
       <ul class="navbar-list">
         <li><button class="navbar-link active" onclick="showSection('about')">About</button></li>
         <li><button class="navbar-link" onclick="showSection('resume')">Resume</button></li>
-        <li><button class="navbar-link" onclick="showSection('portfolio')">Portfolio</button></li>
-        <li><button class="navbar-link" onclick="showSection('blog')">Blog</button></li>
+        <li><button class="navbar-link" onclick="showSection('publications')">Publications</button></li>
+        <li><button class="navbar-link" onclick="showSection('projects')">Projects</button></li>
+        <li><button class="navbar-link" onclick="showSection('research')">Research Interests</button></li>
         <li><button class="navbar-link" onclick="showSection('contact')">Contact</button></li>
       </ul>
     </nav>
@@ -346,12 +404,12 @@
     <div id="about" class="content-section active">
       <h2 class="section-title">About Me</h2>
       <p class="section-text">
-        I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
+        I'm a Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
         I enjoy turning complex problems into simple, beautiful and intuitive designs.
       </p>
       <p class="section-text">
         My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-        Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
+        Moreover, I add a personal touch to your product and make sure that it is eye-catching and easy to use. My aim is to bring
         across your message and identity in the most creative way. I created web design for many famous brand companies.
       </p>
       
@@ -359,7 +417,7 @@
       <ul style="list-style: none; color: #c0c0c0; line-height: 1.8;">
         <li>[Mar. 2025] Our paper about superpixel segmentation is accepted to TGRS.</li>
         <li>[Dec. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
-        <li>[Dec. 2023] I will go to teach at the Northeastern University at Qinhuangdao.</li>
+        <li>[Dec. 2023] I will start teaching at Northeastern University at Qinhuangdao.</li>
         <li>[Apr. 2023] Our paper about land use and land cover joint heterogeneous image is accepted to ISPRS J.</li>
         <li>[Aug. 2022] Our paper about building detection is accepted to JAG.</li>
       </ul>
@@ -369,85 +427,109 @@
       <h2 class="section-title">Resume</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <p class="timeline-date">2024.01 - 至今</p>
-          <h4 class="timeline-title">东北大学秦皇岛分校</h4>
-          <p class="timeline-desc">计算机与通信工程学院 讲师</p>
+          <p class="timeline-date">2024.01 - Present</p>
+          <h4 class="timeline-title">Northeastern University at Qinhuangdao</h4>
+          <p class="timeline-desc">Lecturer, School of Computer and Communication Engineering</p>
         </div>
         <div class="timeline-item">
           <p class="timeline-date">2019.09 - 2023.12</p>
-          <h4 class="timeline-title">武汉大学</h4>
-          <p class="timeline-desc">国家网络安全学院 博士学位</p>
+          <h4 class="timeline-title">Wuhan University</h4>
+          <p class="timeline-desc">Ph.D. in Cybersecurity, School of Cyber Science and Engineering</p>
         </div>
       </div>
     </div>
 
-    <div id="portfolio" class="content-section">
+    <div id="publications" class="content-section">
       <h2 class="section-title">Publications</h2>
       
       <div class="publication-item">
+        <div class="pub-number">1</div>
         <p class="pub-authors"><strong>Ding Hongwei</strong>, Sun Yu, Huang Nana, Shen Zhidong*, Cui Xiaohui*.</p>
         <p class="pub-title">TMG-GAN: Generative Adversarial Networks-Based Imbalanced Learning for Network Intrusion Detection</p>
         <p class="pub-journal">IEEE Transactions on Information Forensics and Security, 2023</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF A刊，ESI高被引论文</p>
+        <p class="pub-note">JCR Q1 Top Journal, CCF A-rank, ESI Highly Cited Paper</p>
       </div>
       
       <div class="publication-item">
+        <div class="pub-number">2</div>
         <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana*, Wu Yaoxin, Cui Xiaohui.</p>
         <p class="pub-title">Improving Infrared Small Target Detection with GAN-Driven Data Augmentation</p>
         <p class="pub-journal">IEEE Transactions on Multimedia, 2025</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
+        <p class="pub-note">JCR Q1 Top Journal, CCF B-rank</p>
       </div>
       
       <div class="publication-item">
+        <div class="pub-number">3</div>
         <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana*, Wu Yaoxin, Cui Xiaohui.</p>
         <p class="pub-title">Improving Imbalanced Medical Image Classification through GAN-based Data Augmentation Methods</p>
         <p class="pub-journal">Pattern Recognition, 2025</p>
-        <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
-      </div>
-
-      <h3 class="section-title" style="font-size: 24px; margin-top: 50px;">Projects</h3>
-      
-      <div class="project-item">
-        <h4 class="project-title">河北省自然科学基金-青年科学基金项目</h4>
-        <p class="project-period">2024.01 - 2026.12</p>
-        <p class="project-role">主持</p>
-      </div>
-      
-      <div class="project-item">
-        <h4 class="project-title">东北大学人才专项科研启动基金项目</h4>
-        <p class="project-period">2024.03 - 2029.03</p>
-        <p class="project-role">主持</p>
-      </div>
-      
-      <div class="project-item">
-        <h4 class="project-title">中央高校基本科研业务费项目</h4>
-        <p class="project-period">2024.01 - 2025.12</p>
-        <p class="project-role">主持</p>
+        <p class="pub-note">JCR Q1 Top Journal, CCF B-rank</p>
       </div>
     </div>
 
-    <div id="blog" class="content-section">
-      <h2 class="section-title">Blog</h2>
-      <p class="section-text">Coming soon...</p>
+    <div id="projects" class="content-section">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="project-item">
+        <h4 class="project-title">Natural Science Foundation of Hebei Province - Youth Science Foundation Project</h4>
+        <p class="project-period">2024.01 - 2026.12</p>
+        <p class="project-role">Principal Investigator</p>
+      </div>
+      
+      <div class="project-item">
+        <h4 class="project-title">Northeastern University Talent Special Research Startup Fund Project</h4>
+        <p class="project-period">2024.03 - 2029.03</p>
+        <p class="project-role">Principal Investigator</p>
+      </div>
+      
+      <div class="project-item">
+        <h4 class="project-title">Fundamental Research Funds for the Central Universities</h4>
+        <p class="project-period">2024.01 - 2025.12</p>
+        <p class="project-role">Principal Investigator</p>
+      </div>
+    </div>
+
+    <div id="research" class="content-section">
+      <h2 class="section-title">Research Interests</h2>
+      
+      <div class="research-area">
+        <h4>Machine Learning & Deep Learning</h4>
+        <p>Focusing on generative adversarial networks (GANs), imbalanced learning, and data augmentation techniques for various applications in computer vision and cybersecurity.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Computer Vision</h4>
+        <p>Specializing in infrared small target detection, medical image analysis, superpixel segmentation, and remote sensing image processing with emphasis on practical applications.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Cybersecurity & Network Security</h4>
+        <p>Research interests include network intrusion detection, anomaly detection systems, and the application of machine learning techniques in cybersecurity domain.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Remote Sensing & GIS</h4>
+        <p>Working on land use and land cover classification, building detection, and analysis of heterogeneous remote sensing imagery using advanced machine learning approaches.</p>
+      </div>
     </div>
 
     <div id="contact" class="content-section">
       <h2 class="section-title">Contact</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <h4 class="timeline-title">联系邮箱</h4>
+          <h4 class="timeline-title">Email</h4>
           <p class="timeline-desc">
             <a href="mailto:hwding@whu.edu.cn" style="color: #ffc107; text-decoration: none;">hwding@whu.edu.cn</a><br>
             <a href="mailto:dinghongwei@neuq.edu.cn" style="color: #ffc107; text-decoration: none;">dinghongwei@neuq.edu.cn</a>
           </p>
         </div>
         <div class="timeline-item">
-          <h4 class="timeline-title">电话</h4>
-          <p class="timeline-desc">15623067863</p>
+          <h4 class="timeline-title">Phone</h4>
+          <p class="timeline-desc">+86 15623067863</p>
         </div>
         <div class="timeline-item">
-          <h4 class="timeline-title">地址</h4>
-          <p class="timeline-desc">东北大学秦皇岛分校综合楼1311</p>
+          <h4 class="timeline-title">Office Address</h4>
+          <p class="timeline-desc">Room 1311, Comprehensive Building, Northeastern University at Qinhuangdao</p>
         </div>
       </div>
     </div>
