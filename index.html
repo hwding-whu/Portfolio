@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hongwei Ding - Personal Portfolio</title>
+  <title>hwding - Personal Portfolio</title>
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -15,931 +18,707 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #ffc107;
-      --primary-dark: #ffa000;
-      --bg-dark: #0a0a0a;
-      --bg-card: #1a1a1a;
-      --bg-card-hover: #252525;
-      --text-primary: #ffffff;
-      --text-secondary: #b0b0b0;
-      --text-muted: #707070;
-      --border: #2a2a2a;
-      --shadow: rgba(255, 193, 7, 0.1);
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-secondary);
-      overflow-x: hidden;
-    }
-
-    /* Animated background */
-    .bg-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.03;
-      background: 
-        radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, var(--primary) 0%, transparent 50%);
-      animation: float 20s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(50px, 50px); }
-    }
-
-    .container {
+      font-family: 'Poppins', sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
       display: flex;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 20px;
-      gap: 30px;
-      position: relative;
+      min-height: 100vh;
     }
 
-    /* Sidebar */
     .sidebar {
-      width: 340px;
-      position: sticky;
-      top: 20px;
+      width: 300px;
+      background: #2a2a2a;
+      padding: 30px;
+      border-radius: 20px;
+      margin: 20px;
       height: fit-content;
-      animation: slideInLeft 0.6s ease-out;
     }
 
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .avatar-box {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    .sidebar-card {
-      background: var(--bg-card);
-      border-radius: 24px;
-      padding: 40px;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    .avatar-wrapper {
-      position: relative;
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 24px;
-    }
-
-    .avatar-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
-      border-radius: 50%;
-      animation: rotate 3s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes rotate {
-      100% { transform: rotate(360deg); }
-    }
-
-    .avatar-wrapper img {
-      width: 100%;
-      height: 100%;
+    .avatar-box img {
+      width: 120px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--bg-card);
     }
 
     .name {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-primary);
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
       text-align: center;
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
+      margin-bottom: 5px;
     }
 
     .title {
-      color: var(--text-muted);
+      color: #a0a0a0;
       text-align: center;
       margin-bottom: 30px;
       font-size: 14px;
-      font-weight: 500;
     }
 
-    .divider {
+    .separator {
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 24px 0;
+      background: #404040;
+      margin: 20px 0;
     }
 
     .contact-item {
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 20px;
-      padding: 12px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .contact-item:hover {
-      background: var(--bg-card-hover);
-      transform: translateX(4px);
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 14px;
     }
 
     .icon {
-      font-size: 20px;
-      min-width: 24px;
+      width: 20px;
+      margin-right: 15px;
+      color: #ffc107;
     }
 
-    .contact-info {
-      flex: 1;
+    .contact-title {
+      color: #a0a0a0;
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
-    .contact-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .contact-value {
-      color: var(--text-secondary);
-      font-size: 14px;
+    .contact-link {
+      color: #e0e0e0;
       text-decoration: none;
+    }
+
+    .social-list {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .social-link {
+      color: #a0a0a0;
+      font-size: 18px;
       transition: color 0.3s;
     }
 
-    .contact-value:hover {
-      color: var(--primary);
+    .social-link:hover {
+      color: #ffc107;
     }
 
-    .social-links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 24px;
-    }
-
-    .social-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--bg-card-hover);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .social-btn:hover {
-      background: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px var(--shadow);
-    }
-
-    /* Main Content */
     .main-content {
       flex: 1;
-      animation: fadeIn 0.8s ease-out;
+      padding: 20px;
+      margin-left: 20px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Navigation */
     .navbar {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 8px;
+      background: #2a2a2a;
+      border-radius: 15px;
+      padding: 0;
       margin-bottom: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      border: 1px solid var(--border);
-      position: sticky;
-      top: 20px;
-      z-index: 100;
-      backdrop-filter: blur(10px);
     }
 
-    .nav-btn {
-      background: transparent;
+    .navbar-list {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .navbar-link {
+      background: none;
       border: none;
-      color: var(--text-muted);
-      padding: 12px 24px;
-      border-radius: 14px;
+      color: #a0a0a0;
+      padding: 15px 20px;
       cursor: pointer;
       font-family: inherit;
       font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
+      font-weight: 500;
+      border-radius: 15px;
+      transition: all 0.3s;
     }
 
-    .nav-btn:hover {
-      color: var(--text-primary);
-      background: var(--bg-card-hover);
+    .navbar-link.active {
+      background: #ffc107;
+      color: #1a1a1a;
     }
 
-    .nav-btn.active {
-      background: var(--primary);
-      color: var(--bg-dark);
+    .navbar-link:hover {
+      color: #fff;
     }
 
-    .nav-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 6px;
-      height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-    }
-
-    /* Content Sections */
-    .section {
-      background: var(--bg-card);
-      border-radius: 24px;
-      padding: 48px;
+    .content-section {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 30px;
       margin-bottom: 30px;
-      border: 1px solid var(--border);
       display: none;
-      animation: slideUp 0.5s ease-out;
     }
 
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .section.active {
+    .content-section.active {
       display: block;
     }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
     .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -1px;
+      font-size: 32px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 30px;
       position: relative;
     }
 
-    .section-icon {
-      font-size: 32px;
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #ffc107;
     }
 
     .section-text {
-      line-height: 1.8;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      font-size: 15px;
+      line-height: 1.7;
+      color: #c0c0c0;
+      margin-bottom: 20px;
     }
 
-    /* News Items */
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-height: 600px;
-      overflow-y: auto;
-      padding-right: 12px;
-    }
-
-    .news-list::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .news-list::-webkit-scrollbar-track {
-      background: var(--bg-card-hover);
-      border-radius: 10px;
-    }
-
-    .news-list::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 10px;
-    }
-
-    .news-item {
-      padding: 20px;
-      background: var(--bg-card-hover);
-      border-radius: 16px;
-      border-left: 4px solid var(--primary);
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.5s ease-out backwards;
-    }
-
-    .news-item:nth-child(n) {
-      animation-delay: calc(0.05s * var(--i));
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .news-item:hover {
-      transform: translateX(8px);
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-
-    .news-date {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 13px;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .news-content {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .news-highlight {
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Publication Cards */
-    .pub-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .pub-card {
-      background: var(--bg-card-hover);
-      border-radius: 20px;
-      padding: 32px;
-      border-left: 4px solid var(--primary);
-      position: relative;
-      transition: all 0.4s ease;
-      overflow: hidden;
-    }
-
-    .pub-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, transparent, rgba(255, 193, 7, 0.05));
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .pub-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px var(--shadow);
-    }
-
-    .pub-card:hover::before {
-      opacity: 1;
-    }
-
-    .pub-number {
-      position: absolute;
-      top: -16px;
-      right: 24px;
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--bg-dark);
-      font-size: 18px;
-      box-shadow: 0 4px 12px var(--shadow);
-    }
-
-    .pub-authors {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .pub-authors strong {
-      color: var(--primary);
-    }
-
-    .pub-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 17px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .pub-venue {
-      color: var(--primary);
-      font-weight: 500;
-      margin-bottom: 12px;
-      font-size: 15px;
-    }
-
-    .pub-badge {
-      display: inline-block;
-      padding: 6px 12px;
-      background: rgba(255, 193, 7, 0.1);
-      border: 1px solid rgba(255, 193, 7, 0.3);
-      border-radius: 8px;
-      font-size: 12px;
-      color: var(--primary);
-      font-weight: 500;
-    }
-
-    /* Timeline */
     .timeline {
-      position: relative;
-      padding-left: 40px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--primary), transparent);
+      margin-top: 30px;
     }
 
     .timeline-item {
+      margin-bottom: 25px;
+      padding-left: 25px;
       position: relative;
-      margin-bottom: 32px;
-      padding: 24px;
-      background: var(--bg-card-hover);
-      border-radius: 16px;
-      transition: all 0.3s ease;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -48px;
-      top: 28px;
-      width: 16px;
-      height: 16px;
-      background: var(--primary);
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: #ffc107;
       border-radius: 50%;
-      border: 4px solid var(--bg-card);
-      box-shadow: 0 0 0 4px var(--bg-card-hover);
-    }
-
-    .timeline-item:hover {
-      transform: translateX(8px);
-      box-shadow: 0 8px 24px var(--shadow);
     }
 
     .timeline-date {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 13px;
-      margin-bottom: 8px;
+      color: #ffc107;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 5px;
     }
 
     .timeline-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 8px;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 5px;
     }
 
     .timeline-desc {
-      color: var(--text-secondary);
+      color: #a0a0a0;
       font-size: 14px;
     }
 
-    /* Project Cards */
-    .project-grid {
-      display: grid;
-      gap: 20px;
+    .publication-item {
+      margin-bottom: 30px;
+      padding: 25px;
+      background: #333;
+      border-radius: 15px;
+      border-left: 4px solid #ffc107;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .project-card {
-      background: var(--bg-card-hover);
-      border-radius: 16px;
-      padding: 28px;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-      cursor: pointer;
+    .publication-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
     }
 
-    .project-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px var(--shadow);
+    .pub-number {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: #ffc107;
+      color: #1a1a1a;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .pub-authors {
+      color: #c0c0c0;
+      margin-bottom: 8px;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .pub-title {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .pub-journal {
+      color: #ffc107;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .pub-note {
+      color: #a0a0a0;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .project-item {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #333;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 193, 7, 0.1);
     }
 
     .project-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 17px;
-      margin-bottom: 12px;
+      color: #ffc107;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 16px;
     }
 
-    .project-meta {
-      display: flex;
-      gap: 20px;
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 8px;
+    .project-period {
+      color: #a0a0a0;
+      font-size: 14px;
+      margin-bottom: 5px;
     }
 
     .project-role {
-      color: var(--primary);
+      color: #c0c0c0;
+      font-size: 14px;
+    }
+
+    .research-area {
+      background: #333;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .research-area h4 {
+      color: #ffc107;
       font-weight: 600;
-      font-size: 14px;
-    }
-
-    /* Research Areas */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .research-card {
-      background: var(--bg-card-hover);
-      border-radius: 20px;
-      padding: 32px;
-      border-top: 4px solid var(--primary);
-      transition: all 0.3s ease;
-    }
-
-    .research-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px var(--shadow);
-    }
-
-    .research-icon {
-      font-size: 40px;
-      margin-bottom: 16px;
-    }
-
-    .research-title {
-      color: var(--text-primary);
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .research-desc {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    /* Search Bar */
-    .search-container {
-      margin-bottom: 32px;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 16px 48px 16px 20px;
-      background: var(--bg-card-hover);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      color: var(--text-primary);
-      font-family: inherit;
-      font-size: 14px;
-      transition: all 0.3s;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.1);
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      margin-bottom: 10px;
       font-size: 18px;
-      color: var(--text-muted);
     }
 
-    /* Filter Buttons */
-    .filter-container {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .filter-btn {
-      padding: 10px 20px;
-      background: var(--bg-card-hover);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text-muted);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .filter-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: var(--bg-dark);
-    }
-
-    /* Stats Cards */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .stat-card {
-      background: linear-gradient(135deg, var(--bg-card-hover), var(--bg-card));
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-    }
-
-    .stat-number {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        position: relative;
-        top: 0;
-      }
-
-      .section {
-        padding: 32px 24px;
-      }
-
-      .research-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .navbar {
-        position: relative;
-        top: 0;
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-
-      .pub-card {
-        padding: 24px;
-      }
+    .research-area p {
+      color: #c0c0c0;
+      line-height: 1.6;
     }
   </style>
 </head>
+
 <body>
-  <div class="bg-animation"></div>
-  
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-card">
-        <div class="avatar-wrapper">
-          <img src="https://raw.githubusercontent.com/hwding-whu/Portfolio/master/website-demo-image/hwding.png" alt="Hongwei Ding">
+  <aside class="sidebar">
+    <div class="avatar-box">
+      <img src="https://raw.githubusercontent.com/hwding-whu/Portfolio/master/website-demo-image/hwding.png" alt="hwding">
+    </div>
+    
+    <h1 class="name">Hongwei Ding</h1>
+    <p class="title">Northeastern University</p>
+    
+    <div class="separator"></div>
+    
+    <div class="contact-item">
+      <div class="icon">📧</div>
+      <div>
+        <p class="contact-title">EMAIL</p>
+        <a href="mailto:hwding@whu.edu.cn" class="contact-link">hwding@whu.edu.cn</a>
+      </div>
+    </div>
+    
+    <div class="contact-item">
+      <div class="icon">📱</div>
+      <div>
+        <p class="contact-title">PHONE</p>
+        <a href="tel:+86 15623067863" class="contact-link">+86 15623067863</a>
+      </div>
+    </div>
+    
+    <div class="contact-item">
+      <div class="icon">🏢</div>
+      <div>
+        <p class="contact-title">AFFILIATION</p>
+        <p class="contact-link">Northeastern University</p>
+      </div>
+    </div>
+    
+    <div class="contact-item">
+      <div class="icon">📍</div>
+      <div>
+        <p class="contact-title">LOCATION</p>
+        <p class="contact-link">Qinhuangdao, Hebei, China</p>
+      </div>
+    </div>
+    
+    <div class="separator"></div>
+    
+    <ul class="social-list">
+      <li><a href="#" class="social-link">📘</a></li>
+      <li><a href="#" class="social-link">🐦</a></li>
+      <li><a href="#" class="social-link">📷</a></li>
+    </ul>
+  </aside>
+
+  <div class="main-content">
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li><button class="navbar-link active" onclick="showSection('about')">About</button></li>
+        <li><button class="navbar-link" onclick="showSection('resume')">Resume</button></li>
+        <li><button class="navbar-link" onclick="showSection('publications')">Publications</button></li>
+        <li><button class="navbar-link" onclick="showSection('projects')">Projects</button></li>
+        <li><button class="navbar-link" onclick="showSection('research')">Research Interests</button></li>
+        <li><button class="navbar-link" onclick="showSection('contact')">Contact</button></li>
+      </ul>
+    </nav>
+
+    <div id="about" class="content-section active">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-text">
+        I am currently a Lecturer and Master’s supervisor at the School of Computer and Communication Engineering, Northeastern University at Qinhuangdao. I received my Ph.D. degree in Cyberspace Security from the School of Cyber Science and Engineering, Wuhan University, in December 2023, under the supervision of Prof. Xiaohui Cui.
+      <p class="section-text">
+        My research interests include machine learning, data mining, generative models, imbalanced learning, object detection and segmentation, and multimodal learning. My current research focuses on leveraging deep generative models to address data imbalance and small-sample challenges in machine learning, thereby improving the performance of downstream classification and segmentation tasks. 
+      <p class="section-text">
+        Since 2025, I have been recruiting Master’s and undergraduate students, and I welcome motivated students to join my group.
+      </p>
+      </p>
+      
+      <h3 class="section-title" style="font-size: 24px; margin-top: 40px;">News</h3>
+      <ul style="list-style: none; color: #c0c0c0; line-height: 1.8;">
+        <li><span style="color: #4da6ff;">[Nov. 2025]</span> Our paper “DEEL: An Imbalanced Binary Data Classification Method Based on Diffusion Model Data Augmentation and Multi-Objective Optimization Ensemble” has been accepted for publication in <span style="color: #4da6ff;">Information Processing & Management</span>.</li>
+        <li><span style="color: #4da6ff;">[Sep. 2025]</span> Our paper “Balancing Act: MDGAN for Imbalanced Tabular Data Synthesis” has been accepted for publication in <span style="color: #4da6ff;">IEEE TKDE</span>.</li>
+        <li><span style="color: #4da6ff;">[Aug. 2025]</span> Our paper “Federated Broad Learning for Unmanned Aerial Vehicle Clusters in Water Monitoring” has been accepted for publication in <span style="color: #4da6ff;">IEEE IoT</span>.</li>
+        <li><span style="color: #4da6ff;">[May. 2025]</span> Our paper “ELSP-MA: An Efficient Lightweight and Security-enhanced Privacy-preserving Message Authentication Scheme for VANETs” has been accepted for publication in <span style="color: #4da6ff;">IEEE TVT</span>.</li>
+        <li><span style="color: #4da6ff;">[Apr. 2025]</span> Our paper “Improving Imbalanced Medical Image Classification through GAN-Based Data Augmentation Methods” has been accepted for publication in <span style="color: #4da6ff;">Pattern Recognition</span>.</li>
+        <li><span style="color: #4da6ff;">[Mar. 2025]</span> Our paper “Improving Infrared Small Target Detection with GAN-Driven Data Augmentation” has been accepted for publication in <span style="color: #4da6ff;">IEEE TMM</span>.</li>
+        <li><span style="color: #4da6ff;">[Mar. 2025]</span> Our paper “LogiCoTab: Controllable Tabular Data Synthesis with Logical Relationships Awareness” has been accepted for publication in <span style="color: #4da6ff;">IEEE ICME</span>.</li>
+        <li><span style="color: #4da6ff;">[Jan. 2025]</span> Our paper “Multi-Time-Scale with Clockwork Recurrent Neural Network Modeling for Sequential Recommendation” has been accepted for publication in <span style="color: #4da6ff;">The Journal of Supercomputing</span>.</li>
+        <li><span style="color: #4da6ff;">[Dec. 2024]</span> Our paper “BDGAN: Boundary and Diversity-aware Generative Adversarial Network for Imbalanced Medical Image Augmentation” has been accepted for publication in <span style="color: #4da6ff;">IEEE ICASSP</span>.</li>
+        <li><span style="color: #4da6ff;">[Oct. 2024]</span> I serve as a master's supervisor.</li>
+        <li><span style="color: #4da6ff;">[Oct. 2024]</span> Our paper “DM-GAN: A Data Augmentation-Based Approach for Imbalanced Medical Image Classification” has been accepted for publication in <span style="color: #4da6ff;">IEEE BIBM</span>.</li>
+        <li><span style="color: #4da6ff;">[Oct. 2024]</span> Our paper “ASM-GAN: Arbitrary Object Shape Styles Manipulation in Synthesized Images for GANs” has been accepted for publication in <span style="color: #4da6ff;">IEEE TIM</span>.</li>
+        <li><span style="color: #4da6ff;">[Oct. 2024]</span> Our paper “Infrared Small Target Detection Improvement via Hybrid Data Augmentation Using Diffusion Models and GAN” has been accepted for publication in <span style="color: #4da6ff;">IEEE TAES</span>.</li>
+        <li><span style="color: #4da6ff;">[Aug. 2024]</span> Our paper “Leveraging GANs data augmentation for imbalanced medical image classification” has been accepted for publication in <span style="color: #4da6ff;">Applied Soft Computing</span>.</li>
+        <li><span style="color: #4da6ff;">[May. 2024]</span> I was awarded the Outstanding Graduate honor by Wuhan University.</li>
+        <li><span style="color: #4da6ff;">[Apr. 2024]</span> Our paper “LEGAN: Addressing intraclass imbalance in GAN-based medical image augmentation for improved imbalanced data classification” has been accepted for publication in <span style="color: #4da6ff;">IEEE TIM</span>.</li>
+        <li><span style="color: #4da6ff;">[Mar. 2024]</span> Our paper “Synthetic Data Augmentation for Infrared Small Target Detection via Exploring Frequency Components and Targets Prior” has been accepted for publication in <span style="color: #4da6ff;">IEEE ICME</span>.</li>
+        <li><span style="color: #4da6ff;">[Mar. 2024]</span> Our paper “Multimodal dynamic graph convolutional network for crowdfunding success prediction” has been accepted for publication in <span style="color: #4da6ff;">Applied Soft Computing</span>.</li>
+        <li><span style="color: #4da6ff;">[Jan. 2024]</span> I officially joined the School of Computer and Communication Engineering, Northeastern University at Qinhuangdao.</li>
+        <li><span style="color: #4da6ff;">[Nov. 2023]</span> Our paper “TMG-GAN: Generative Adversarial Networks-Based Imbalanced Learning for Network Intrusion Detection” has been accepted for publication in <span style="color: #4da6ff;">IEEE TIFS</span>.</li>
+        <li><span style="color: #4da6ff;">[Oct. 2023]</span> Our paper “VGAN-BL: Imbalanced Data Classification Based on Generative Adversarial Network and Biased Loss” has been accepted for publication in <span style="color: #4da6ff;">Neural Computing and Applications</span>.</li>
+        <li><span style="color: #4da6ff;">[Jun. 2023]</span> Our paper “B-DSPA: a blockchain-based dynamically scalable privacy-preserving authentication scheme in vehicular ad hoc networks” has been accepted for publication in <span style="color: #4da6ff;">IEEE IoT</span>.</li>
+        <li><span style="color: #4da6ff;">[Feb. 2023]</span> Our paper “Hierarchical Transformer for Multi-Label Trailer Genre Classification” has been accepted for publication in <span style="color: #4da6ff;">IEEE ICASSP</span>.</li>
+        <li><span style="color: #4da6ff;">[Feb. 2023]</span> Our paper “RVGAN-TL: A generative adversarial networks and transfer learning-based hybrid approach for imbalanced data classification” has been accepted for publication in <span style="color: #4da6ff;">Information Sciences</span>.</li>
+        <li><span style="color: #4da6ff;">[Dec. 2022]</span> Our paper “RGAN-EL: A GAN and ensemble learning-based hybrid approach for imbalanced data classification” has been accepted for publication in <span style="color: #4da6ff;">Information Processing & Management</span>.</li>
+        <li><span style="color: #4da6ff;">[Feb. 2022]</span> Our paper “Imbalanced data classification: A KNN and generative adversarial networks-based hybrid approach for intrusion detection” has been accepted for publication in <span style="color: #4da6ff;">Future Generation Computer Systems</span>.</li>
+        
+      </ul>
+    </div>
+
+    <div id="resume" class="content-section">
+      <h2 class="section-title">Resume</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-date">2024.01 - Present</p>
+          <h4 class="timeline-title">Northeastern University at Qinhuangdao</h4>
+          <p class="timeline-desc">Lecturer, School of Computer and Communication Engineering</p>
         </div>
-        
-        <h1 class="name">Hongwei Ding</h1>
-        <p class="title">Northeastern University</p>
-        
-        <div class="divider"></div>
-        
-        <div class="contact-item">
-          <span class="icon">📧</span>
-          <div class="contact-info">
-            <div class="contact-label">Email</div>
-            <a href="mailto:hwding@whu.edu.cn" class="contact-value">hwding@whu.edu.cn</a>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <span class="icon">📱</span>
-          <div class="contact-info">
-            <div class="contact-label">Phone</div>
-            <a href="tel:+8615623067863" class="contact-value">+86 15623067863</a>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <span class="icon">🏢</span>
-          <div class="contact-info">
-            <div class="contact-label">Affiliation</div>
-            <span class="contact-value">Northeastern University</span>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <span class="icon">📍</span>
-          <div class="contact-info">
-            <div class="contact-label">Location</div>
-            <span class="contact-value">Qinhuangdao, Hebei, China</span>
-          </div>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <div class="social-links">
-          <button class="social-btn">📘</button>
-          <button class="social-btn">🐦</button>
-          <button class="social-btn">📷</button>
-          <button class="social-btn">🔬</button>
+        <div class="timeline-item">
+          <p class="timeline-date">2019.09 - 2023.12</p>
+          <h4 class="timeline-title">Wuhan University</h4>
+          <p class="timeline-desc">Ph.D. in Cybersecurity, School of Cyber Science and Engineering</p>
         </div>
       </div>
-    </aside>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Navigation -->
-      <nav class="navbar">
-        <button class="nav-btn active" onclick="showSection('about')">About</button>
-        <button class="nav-btn" onclick="showSection('resume')">Resume</button>
-        <button class="nav-btn" onclick="showSection('publications')">Publications</button>
-        <button class="nav-btn" onclick="showSection('projects')">Projects</button>
-        <button class="nav-btn" onclick="showSection('research')">Research</button>
-        <button class="nav-btn" onclick="showSection('contact')">Contact</button>
-      </nav>
-
-      <!-- About Section -->
-      <section id="about" class="section active">
-        <div class="section-header">
-          <span class="section-icon">👨‍🎓</span>
-          <h2 class="section-title">About Me</h2>
+    <div id="publications" class="content-section">
+      <h2 class="section-title">Publications</h2>
+      
+      <div class="publications-container">
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Tao Qi, Liang Jiaqi, Cui Xiaohui.</p>
+          <p class="pub-title">Balancing Act: MDGAN for Imbalanced Tabular Data Synthesis</p>
+          <p class="pub-journal">IEEE Transactions on Knowledge and Data Engineering, 2025</p>
+          <p class="pub-note">中科院一区/Top期刊，CCF A刊</p>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">28+</div>
-            <div class="stat-label">Publications</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Top Journals</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Active Projects</div>
-          </div>
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Wu Yaoxin, Cui Xiaohui.</p>
+          <p class="pub-title">Improving Infrared Small Target Detection with GAN-Driven Data Augmentation</p>
+          <p class="pub-journal">IEEE Transactions on Multimedia, 2025</p>
+          <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
         </div>
 
-        <p class="section-text">
-          I am currently a Lecturer and Master's supervisor at the School of Computer and Communication Engineering, Northeastern University at Qinhuangdao. I received my Ph.D. degree in Cyberspace Security from the School of Cyber Science and Engineering, Wuhan University, in December 2023, under the supervision of Prof. Xiaohui Cui.
-        </p>
-        <p class="section-text">
-          My research interests include machine learning, data mining, generative models, imbalanced learning, object detection and segmentation, and multimodal learning. My current research focuses on leveraging deep generative models to address data imbalance and small-sample challenges in machine learning, thereby improving the performance of downstream classification and segmentation tasks.
-        </p>
-        <p class="section-text">
-          Since 2025, I have been recruiting Master's and undergraduate students, and I welcome motivated students to join my group.
-        </p>
-
-        <div style="margin-top: 48px;">
-          <h3 class="section-title" style="font-size: 28px; margin-bottom: 24px;">📰 Recent News</h3>
-          <div class="news-list">
-            <div class="news-item" style="--i: 1">
-              <span class="news-date">[Nov. 2025]</span>
-              <p class="news-content">Our paper "DEEL: An Imbalanced Binary Data Classification Method..." has been accepted for publication in <span class="news-highlight">Information Processing & Management</span>.</p>
-            </div>
-            <div class="news-item" style="--i: 2">
-              <span class="news-date">[Sep. 2025]</span>
-              <p class="news-content">Our paper "Balancing Act: MDGAN for Imbalanced Tabular Data Synthesis" has been accepted for publication in <span class="news-highlight">IEEE TKDE</span>.</p>
-            </div>
-            <div class="news-item" style="--i: 3">
-              <span class="news-date">[Aug. 2025]</span>
-              <p class="news-content">Our paper "Federated Broad Learning for Unmanned Aerial Vehicle Clusters..." has been accepted for publication in <span class="news-highlight">IEEE IoT</span>.</p>
-            </div>
-            <div class="news-item" style="--i: 4">
-              <span class="news-date">[May. 2025]</span>
-              <p class="news-content">Our paper "ELSP-MA: An Efficient Lightweight and Security-enhanced..." has been accepted for publication in <span class="news-highlight">IEEE TVT</span>.</p>
-            </div>
-            <div class="news-item" style="--i: 5">
-              <span class="news-date">[Apr. 2025]</span>
-              <p class="news-content">Our paper "Improving Imbalanced Medical Image Classification..." has been accepted for publication in <span class="news-highlight">Pattern Recognition</span>.</p>
-            </div>
-            <div class="news-item" style="--i: 6">
-              <span class="news-date">[Oct. 2024]</span>
-              <p class="news-content">🎓 I serve as a master's supervisor.</p>
-            </div>
-            <div class="news-item" style="--i: 7">
-              <span class="news-date">[May. 2024]</span>
-              <p class="news-content">🏆 I was awarded the Outstanding Graduate honor by Wuhan University.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Resume Section -->
-      <section id="resume" class="section">
-        <div class="section-header">
-          <span class="section-icon">📄</span>
-          <h2 class="section-title">Education & Experience</h2>
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Wu Yaoxin, Cui Xiaohui.</p>
+          <p class="pub-title">Improving Imbalanced Medical Image Classification through GAN-based Data Augmentation Methods</p>
+          <p class="pub-journal">Pattern Recognition, 2025</p>
+          <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <p class="timeline-date">2024.01 - Present</p>
-            <h4 class="timeline-title">Northeastern University at Qinhuangdao</h4>
-            <p class="timeline-desc">Lecturer & Master's Supervisor<br>School of Computer and Communication Engineering</p>
-          </div>
-          <div class="timeline-item">
-            <p class="timeline-date">2019.09 - 2023.12</p>
-            <h4 class="timeline-title">Wuhan University</h4>
-            <p class="timeline-desc">Ph.D. in Cyberspace Security<br>School of Cyber Science and Engineering<br>Supervisor: Prof. Xiaohui Cui</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Publications Section -->
-      <section id="publications" class="section">
-        <div class="section-header">
-          <span class="section-icon">📚</span>
-          <h2 class="section-title">Publications</h2>
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Wang Songyu, Yuan Xiaoming, Huang Nana, Cui Xiaohui.</p>
+          <p class="pub-title">DEEL: An Imbalanced Binary Data Classification Method Based on Diffusion Model Data Augmentation and Multi-Objective Optimization Ensemble</p>
+          <p class="pub-journal">Information Processing and Management, 2025</p>
+          <p class="pub-note">中科院一区/Top期刊，CCF B刊</p>
         </div>
 
-        <div class="search-container">
-          <input type="text" class="search-input" placeholder="Search publications by title, author, or venue..." id="pubSearch">
-          <span class="search-icon">🔍</span>
-        </div
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Tao Qi, Huang Nana.</p>
+          <p class="pub-title">BDGAN: Boundary and Diversity-aware Generative Adversarial Network for Imbalanced Medical Image Augmentation</p>
+          <p class="pub-journal">ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2025</p>
+          <p class="pub-note">CCF B会，EI</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Wang Ziyue, <strong>Ding Hongwei</strong>, Liu Yunqi, Feng Yan, Cui Xiaohui.</p>
+          <p class="pub-title">LogiCoTab: Controllable Tabular Data Synthesis with Logical Relationships Awareness</p>
+          <p class="pub-journal">2025 IEEE International Conference on Multimedia and Expo (ICME), 2025</p>
+          <p class="pub-note">CCF B会，EI</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Zhang Kuan, Huang Nana.</p>
+          <p class="pub-title">DM-GAN: A Data Augmentation-Based Approach for Imbalanced Medical Image Classification</p>
+          <p class="pub-journal">2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2024</p>
+          <p class="pub-note">CCF B会，EI</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Cui Xiaohui.</p>
+          <p class="pub-title">Leveraging GANs data augmentation for imbalanced medical image classification</p>
+          <p class="pub-journal">Applied Soft Computing, 2024</p>
+          <p class="pub-note">中科院一区/Top期刊</p>
+        </div>
+        
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Wu Yaoxin, Cui Xiaohui.</p>
+          <p class="pub-title">Infrared Small Target Detection Improvement via Hybrid Data Augmentation Using Diffusion Models and GAN</p>
+          <p class="pub-journal">IEEE Transactions on Aerospace and Electronic Systems, 2024</p>
+          <p class="pub-note">中科院二区/Top期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Wu Yaoxin, <strong>Ding Hongwei</strong>, Liu Yunqi, Wen Zerui, Cui Xiaohui.</p>
+          <p class="pub-title">Synthetic Data Augmentation for Infrared Small Target Detection via Exploring Frequency Components and Targets Prior</p>
+          <p class="pub-journal">2024 IEEE International Conference on Multimedia and Expo (ICME), 2024</p>
+          <p class="pub-note">CCF B会，EI</p>
+        </div>
+        
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Li Wei, Zhang Mingjun, Li Wenhao, Wang Yinghui*, Zhang Xiaowu, Chen Bin, <strong>Ding Hongwei*</strong>.</p>
+          <p class="pub-title">ASM-GAN: Arbitrary Object Shape Styles Manipulation in Synthesized Images for GANs</p>
+          <p class="pub-journal">IEEE Transactions on Instrumentation and Measurement, 2024</p>
+          <p class="pub-note">中科院二区/Top期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Huang Nana, Wu Yaoxin, Cui Xiaohui.</p>
+          <p class="pub-title">LEGAN: Addressing intraclass imbalance in GAN-based medical image augmentation for improved imbalanced data classification</p>
+          <p class="pub-journal">IEEE Transactions on Instrumentation and Measurement, 2024</p>
+          <p class="pub-note">中科院二区/Top期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Cai Zihui, <strong>Ding Hongwei</strong>, Xu Mohan, Cui Xiaohui.</p>
+          <p class="pub-title">Multimodal dynamic graph convolutional network for crowdfunding success prediction</p>
+          <p class="pub-journal">Applied Soft Computing, 2024</p>
+          <p class="pub-note">中科院一区/Top期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Yu Sun, Huang Nana, Cui Xiaohui.</p>
+          <p class="pub-title">VGAN-BL: imbalanced data classification based on generative adversarial network and biased loss</p>
+          <p class="pub-journal">Neural computing and applications, 2024</p>
+          <p class="pub-note">中科院三区期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Sun Yu, Huang Nana, Shen Zhidong*, Cui Xiaohui*.</p>
+          <p class="pub-title">TMG-GAN: Generative Adversarial Networks-Based Imbalanced Learning for Network Intrusion Detection</p>
+          <p class="pub-journal">IEEE Transactions on Information Forensics and Security, 2023</p>
+          <p class="pub-note">中科院一区/Top期刊，CCF A刊，ESI高被引论文</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Tao Qi, <strong>Ding Hongwei</strong>, Jiang Tian, Cui Xiaohui.</p>
+          <p class="pub-title">B-DSPA: a blockchain-based dynamically scalable privacy-preserving authentication scheme in vehicular ad hoc networks</p>
+          <p class="pub-journal">IEEE Internet of Things Journal, 2023</p>
+          <p class="pub-note">中科院一区/Top期刊</p>
+        </div>
+        
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors">Cai Zihui, <strong>Ding Hongwei</strong>, Wu Xuemeng, Xu Mohan, Cui Xiaohui.</p>
+          <p class="pub-title">Hierarchical Transformer for Multi-Label Trailer Genre Classification</p>
+          <p class="pub-journal">ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2023</p>
+          <p class="pub-note">CCF B会，EI</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Sun Yu, Huang Nana, Shen Zhidong, Wang Zhenyu, Adnan Iftekhar, Cui Xiaohui.</p>
+          <p class="pub-title">RVGAN-TL: A generative adversarial networks and transfer learning-based hybrid approach for imbalanced data classification</p>
+          <p class="pub-journal">Information Sciences, 2023</p>
+          <p class="pub-note">中科院一区/Top期刊, CCF B刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Sun Yu, Wang Zhenyu, Huang Nana, Shen Zhidong, Cui Xiaohui.</p>
+          <p class="pub-title">RGAN-EL: A GAN and ensemble learning-based hybrid approach for imbalanced data classification</p>
+          <p class="pub-journal">Information Processing & Management, 2023</p>
+          <p class="pub-note">中科院一区/Top期刊, CCF B刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Chen Leiyang, Tao Qi, Fu Zhongwang, Dong Liang, Cui Xiaohui.</p>
+          <p class="pub-title">DCU-Net: a dual-channel U-shaped network for image splicing forgery detection</p>
+          <p class="pub-journal">Neural computing and applications, 2023</p>
+          <p class="pub-note">中科院二区期刊</p>
+        </div>
+
+        <div class="publication-item">
+          <div class="pub-number"></div>
+          <p class="pub-authors"><strong>Ding Hongwei</strong>, Chen Leiyang, Dong Liang, Fu Zhongwang, Cui Xiaohui.</p>
+          <p class="pub-title">DCU-Net: a dual-channel U-shaped network for image splicing forgery detection</p>
+          <p class="pub-journal">Future Generation Computer Systems, 2022</p>
+          <p class="pub-note">中科院二区/Top期刊，ESI高被引论文</p>
+        </div>
+      </div>
+    </div>
+        
+    <div id="projects" class="content-section">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="project-item">
+        <h4 class="project-title">河北省自然科学基金 - 青年科学基金项目</h4>
+        <p class="project-period">2024.01 - 2026.12</p>
+        <p class="project-role">主持</p>
+      </div>
+      
+      <div class="project-item">
+        <h4 class="project-title">东北大学人才专项科研启动基金项目</h4>
+        <p class="project-period">2024.03 - 2029.03</p>
+        <p class="project-role">主持</p>
+      </div>
+      
+      <div class="project-item">
+        <h4 class="project-title">中央高校基本科研业务费项目</h4>
+        <p class="project-period">2024.01 - 2025.12</p>
+        <p class="project-role">主持</p>
+      </div>
+    </div>
+
+    <div id="research" class="content-section">
+      <h2 class="section-title">Research Interests</h2>
+      
+      <div class="research-area">
+        <h4>Machine Learning & Deep Learning</h4>
+        <p>Focusing on generative adversarial networks (GANs), diffusion model, imbalanced learning, and data augmentation techniques for various applications in computer vision and cybersecurity.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Computer Vision</h4>
+        <p>Specializing in infrared small target detection, medical image analysis, and superpixel segmentation with emphasis on practical applications.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Cybersecurity & Network Security</h4>
+        <p>Research interests include network intrusion detection, anomaly detection systems, and the application of machine learning techniques in cybersecurity domain.</p>
+      </div>
+      
+      <div class="research-area">
+        <h4>Multimodal Learning</h4>
+        <p>Focusing on the integration of heterogeneous data sources such as text, images, and structured data, developing advanced models for cross-modal representation learning, data fusion, and downstream applications.</p>
+      </div>
+    </div>
+
+    <div id="contact" class="content-section">
+      <h2 class="section-title">Contact</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4 class="timeline-title">Email</h4>
+          <p class="timeline-desc">
+            <a href="mailto:hwding@whu.edu.cn" style="color: #ffc107; text-decoration: none;">hwding@whu.edu.cn</a><br>
+            <a href="mailto:dinghongwei@neuq.edu.cn" style="color: #ffc107; text-decoration: none;">dinghongwei@neuq.edu.cn</a>
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h4 class="timeline-title">Phone</h4>
+          <p class="timeline-desc">+86 15623067863</p>
+        </div>
+        <div class="timeline-item">
+          <h4 class="timeline-title">Office Address</h4>
+          <p class="timeline-desc">东北大学秦皇岛分校综合楼1311室</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionName) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      
+      // Remove active from all navbar links
+      const navLinks = document.querySelectorAll('.navbar-link');
+      navLinks.forEach(link => link.classList.remove('active'));
+      
+      // Show selected section
+      document.getElementById(sectionName).classList.add('active');
+      
+      // Add active to clicked navbar link
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
